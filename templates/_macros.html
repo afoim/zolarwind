@@ -10,27 +10,7 @@
                 {% if post.extra.feature_image is starting_with("http") %}
                     <img class="image" loading="lazy" alt="{{ post.title }}" src="{{ post.extra.feature_image | safe }}">
                 {% else %}
-                {% set dir_path = post.relative_path | replace(from="/index.md", to="") %}
-                {% set feature_image = dir_path ~ "/" ~ post.extra.feature_image %}
-                {% if post.extra.feature_image is matching("[.](jpg|jpeg|png|gif|webp)$") %}
-                    {% set feature_image_300 = resize_image(path=feature_image, width=300, height=150, format="webp") %}
-                    {% set feature_image_600 = resize_image(path=feature_image, width=600, height=300, format="webp") %}
-                    {% set feature_image_900 = resize_image(path=feature_image, width=900, height=450, format="webp") %}
-                    {% set feature_image_1200 = resize_image(path=feature_image, width=1200, height=600, format="webp") %}
-                    <img class="image" loading="lazy" alt="{{ post.title }}"
-                    srcset="{{ feature_image_300.url | safe }} 300w,
-                            {{ feature_image_600.url | safe }} 600w,
-                            {{ feature_image_900.url | safe }} 900w,
-                            {{ feature_image_1200.url | safe }} 1200w"
-                    sizes="(max-width: 500px) 90vw,
-                            (max-width: 700px) 200px,
-                            (max-width: 900px) 300px,
-                            (max-width: 1000px) 200px,
-                            (max-width: 1200px) 300px,
-                            400px">
-                {% elif post.extra.feature_image is matching("[.](svg)$") %}
                     <img class="image" loading="lazy" alt="{{ post.title }}" src="{{ post.permalink | safe }}{{ post.extra.feature_image }}">
-                {% endif %}
                 {% endif %}
             {% else %}
                 <img class="image" loading="lazy" alt="{{ post.title }}"
