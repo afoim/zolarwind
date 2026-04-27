@@ -188,6 +188,27 @@ hr {
         padding-right: 5vw;
     }
 
+    > .site-avatar-link {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5em;
+
+        > .site-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 30px -10px hsla(0, 0%, 70%, 1.0);
+        }
+
+        @media screen and (max-width: 900px) {
+            > .site-avatar {
+                width: 64px;
+                height: 64px;
+            }
+        }
+    }
+
     > .title {
         > .section {
             font-weight: normal;
@@ -864,14 +885,9 @@ hr {
     }
 
     img {
-        width: 100%;
+        max-width: 100%;
+        height: auto;
         border-radius: 4px;
-
-        @media screen and (max-width: 500px) {
-            width: 100vw;
-            margin-left: -5vw;
-            border-radius: unset;
-        }
     }
 
     > iframe {
